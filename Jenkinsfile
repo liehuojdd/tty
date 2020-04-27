@@ -1,4 +1,4 @@
-node("jenkins-slaves") {
+node{
     deleteDir() // <-------------- HERE
 
     stage('checkout repo') {
