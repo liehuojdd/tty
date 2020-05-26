@@ -1,5 +1,5 @@
 node{
-    deleteDir() // <-------------- HERE
+    //deleteDir() // <-------------- HERE
 
     stage('checkout repo') {
         // REDACTED
