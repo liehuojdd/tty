@@ -9,8 +9,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
@@ -35,7 +33,7 @@ public class ResponseHeaders extends BaseClass {
         response=client.execute(get);
         Header contentType=response.getEntity().getContentType();
         assertEquals(contentType.getValue(),"application/json; charset=utf-8");
-        ContentType ct=ContentType.getOrDefault(response.getEntity());
+        ContentType ct= ContentType.getOrDefault(response.getEntity());
         assertEquals(ct.getMimeType(),"application/json");
     }
 
@@ -43,7 +41,7 @@ public class ResponseHeaders extends BaseClass {
     public void serverIsGithub() throws IOException {
         HttpGet get =new HttpGet(BASE_ENDPOINT);
         response=client.execute(get);
-        String headerValue=ResponseUtils.getHeader(response,"Server");
+        String headerValue= ResponseUtils.getHeader(response,"Server");
         assertEquals(headerValue,"GitHub.com");
     }
 

@@ -52,7 +52,7 @@ public class BodyTestWithSimpleMap extends BaseClass {
 
     }
 
-    private Object getValueFor(JSONObject jsonObject,String key){
+    private Object getValueFor(JSONObject jsonObject, String key){
         return jsonObject.get(key);
     }
 }

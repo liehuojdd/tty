@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+
 //Write Basic Get tests for response Headers
 //More status code
 public class Get404 {

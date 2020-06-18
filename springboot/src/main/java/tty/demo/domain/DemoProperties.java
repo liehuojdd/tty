@@ -1,4 +1,4 @@
-package com.tty.demo.domain;
+package tty.demo.domain;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

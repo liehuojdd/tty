@@ -2,14 +2,13 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
 
 import static org.testng.Assert.assertEquals;
 
-public class Get401 extends BaseClass{
+public class Get401 extends BaseClass {
     //public static final String BASE_ENDPOINT="https://api.github.com";//second
     CloseableHttpClient client; //step 3
     CloseableHttpResponse response;

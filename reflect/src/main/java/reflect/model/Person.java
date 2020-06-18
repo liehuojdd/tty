@@ -16,7 +16,7 @@ public class Person {
         this.age=age;
     }
 
-    public static Person of(String name,int age){
+    public static Person of(String name, int age){
         return new Person(name,age);
     }
 
