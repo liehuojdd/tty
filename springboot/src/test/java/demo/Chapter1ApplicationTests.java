@@ -1,6 +1,7 @@
 package demo;
 
 import demo.domain.DemoProperties;
+import demo.web.HelloController;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,12 @@ public class Chapter1ApplicationTests {
         mvc.perform(MockMvcRequestBuilders.get("/hello"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("Hello World!"));
+        HelloController helloController=new HelloController();
+        helloController.index();
+        DemoProperties dp=new DemoProperties();
+        dp.setAuthor("mark");
+        dp.getAuthor();
+        System.out.println("helloController");
     }
 
     @Autowired

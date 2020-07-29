@@ -1,5 +1,6 @@
 package reflect;
 
+import reflect.annotation.MyAnnotation;
 import reflect.model.Person;
 
 import java.lang.reflect.*;
@@ -20,6 +21,11 @@ public class PlayWithRefllection {
             Field[] declaredFields=personClass.getDeclaredFields();
             System.out.println("DeclaredFields:");
             System.out.println(Arrays.toString(declaredFields));
+            Field filed=personClass.getDeclaredField("name");
+            filed.setAccessible(true);
+            Person p= (Person) personClass.newInstance();
+            filed.set(p,"Lee");
+            System.out.println("Set filed "+p);
 
             System.out.println("Methods:");
             Method[] methods=personClass.getMethods();
@@ -41,16 +47,21 @@ public class PlayWithRefllection {
             System.out.println("=======================");
 
             String[] s = new String[]{"aa","bb"};
+            Constructor con2 =  personClass.getConstructor( new Class[]{String.class, int.class});
+            MyAnnotation.MyConstructorAnnotation conAnn= (MyAnnotation.MyConstructorAnnotation) con2.getAnnotation(MyAnnotation.MyConstructorAnnotation.class);
             Constructor con =  personClass.getConstructor();
-            Person p = (Person) con.newInstance();
+            Person p2 = (Person) con.newInstance();
             Method method1=personClass.getMethod("eat",String[].class);
-            method1.invoke(p,new Object[]{s});
-            method1.invoke(p,(Object)s);//two functions are the same
+            method1.invoke(p2,new Object[]{s});
+            method1.invoke(p2,(Object)s);//two functions are the same
 
             Method method2=personClass.getMethod("eatOnly",null);
             //method2=personClass.getMethod("eatOnly",(Class<?>[]) null);//(Class<?>[]) from my project.
             method2.invoke(p,null);
 
+            System.out.println("get annotation");
+            MyAnnotation.MyClassAnnotation myAnn=personClass.getAnnotation(MyAnnotation.MyClassAnnotation.class);
+            System.out.println(myAnn.desc()+" "+myAnn.uri());
 
         }catch (ClassNotFoundException e){
             e.printStackTrace();
@@ -61,6 +72,8 @@ public class PlayWithRefllection {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
 
